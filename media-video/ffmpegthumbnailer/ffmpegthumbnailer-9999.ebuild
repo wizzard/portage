@@ -3,11 +3,14 @@
 
 EAPI=7
 
-inherit cmake
+EGIT_MIN_CLONE_TYPE="single"
+EGIT_REPO_URI="https://github.com/dirkvdb/ffmpegthumbnailer.git"
+
+inherit cmake git-r3
 
 DESCRIPTION="Lightweight video thumbnailer that can be used by file managers"
 HOMEPAGE="https://github.com/dirkvdb/ffmpegthumbnailer"
-SRC_URI="https://github.com/dirkvdb/${PN}/releases/download/${PV}/${P}.tar.bz2"
+SRC_URI=""
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -30,10 +33,6 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS ChangeLog README.md )
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-${PV}-permissive.patch
-)
 
 src_prepare() {
 	rm -rf out* || die
